@@ -105,6 +105,7 @@ body {
   display: none;
   &.active {
     display: block;
+    animation: fadeIn 3s;
   }
 }
 
@@ -118,3 +119,9 @@ body {
     margin: 0 10px 0 0;
   }
 }
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
