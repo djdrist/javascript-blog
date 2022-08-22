@@ -195,7 +195,6 @@ function generateTags(){
         count: allTags[tag],
         className: calculateTagClass(allTags[tag], tagsParams)
       });
-      console.log(allTagsData);
     }
     /* [NEW] END LOOP: for each tag in allTags: */
 
@@ -286,7 +285,11 @@ function generateAuthors(){
 
   // variable allAuthors
 
-  let allAuthors = [];
+  //REMOVED!
+  //let allAuthors = [];
+
+  //ADDED!
+  const allAuthorsData = {authors: []};
 
   /* [DONE] find all articles */
   
@@ -315,25 +318,32 @@ function generateAuthors(){
     const linkHTMLData = {author: authorName};
     const linkHTML = templates.articleAuthor(linkHTMLData);
 
-    const authorListHTML = '<li><a href="#author-' + authorName + '"><span>' + authorName + '</span></a></li>';
+    // const authorListHTML = '<li><a href="#author-' + authorName + '"><span>' + authorName + '</span></a></li>';
 
     // check if this link is NOT already in allAuthors */
-    if(allAuthors.indexOf(authorListHTML) == -1){
-    // add generated code to allAuthors array */
-      allAuthors.push(authorListHTML);
+    console.log(authorName);
+    console.log(allAuthorsData.authors);
+    if(allAuthorsData.authors.indexOf(authorName) == -1){
+      /* add generated code to allAuthors array */
+      allAuthorsData.authors.push({
+        author: authorName
+      });
     }
     /* [DONE] add generated code to HTML variable */
     html = html + linkHTML;
     
     /* [DONE] insert HTML of the author */
-;
+
     postAuthor.innerHTML = html;
 
     /* [DONE] END LOOP: for every article: */
   }
   // ADD ALL AUTHORS TO RIGHT COLUMN
   const authorListColumn = document.querySelector(opts.authorsListSelector);
-  authorListColumn.innerHTML = allAuthors.join(' ');
+  //ADDED!
+  authorListColumn.innerHTML = templates.authorList(allAuthorsData);
+  //REMOVED!
+  //authorListColumn.innerHTML = allAuthors.join(' ');
   
 }
     
