@@ -325,7 +325,6 @@ function generateAuthors(){
         author: authorName
       });    
     }
-
     /* [DONE] add generated code to HTML variable */
     html = html + linkHTML;
     
