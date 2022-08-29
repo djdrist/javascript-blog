@@ -320,11 +320,10 @@ function generateAuthors(){
 
     // const authorListHTML = '<li><a href="#author-' + authorName + '"><span>' + authorName + '</span></a></li>';
 
-    const authorSearch = allAuthorsData.authors.find(({ author }) => author === authorName);
-    if (authorSearch == undefined){
+    if(allAuthorsData.authors.find(({ author }) => author === authorName) == undefined){
       allAuthorsData.authors.push({
         author: authorName
-      });
+      });    
     }
 
     /* [DONE] add generated code to HTML variable */
