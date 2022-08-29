@@ -320,15 +320,13 @@ function generateAuthors(){
 
     // const authorListHTML = '<li><a href="#author-' + authorName + '"><span>' + authorName + '</span></a></li>';
 
-    // check if this link is NOT already in allAuthors */
-    console.log(authorName);
-    console.log(allAuthorsData.authors);
-    if(allAuthorsData.authors.indexOf(authorName) == -1){
-      /* add generated code to allAuthors array */
+    const authorSearch = allAuthorsData.authors.find(({ author }) => author === authorName);
+    if (authorSearch == undefined){
       allAuthorsData.authors.push({
         author: authorName
       });
     }
+
     /* [DONE] add generated code to HTML variable */
     html = html + linkHTML;
     
@@ -344,7 +342,7 @@ function generateAuthors(){
   authorListColumn.innerHTML = templates.authorList(allAuthorsData);
   //REMOVED!
   //authorListColumn.innerHTML = allAuthors.join(' ');
-  
+
 }
     
 generateAuthors();
